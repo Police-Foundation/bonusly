@@ -2,14 +2,15 @@ import requests
 import json
 import pandas as pd
 
-token='2aa792cfacc8759194595dd269414427'
+# token=
 
 base='https://bonus.ly/api/v1/'
 
-headers={'Authorization': 'Bearer {}'.format(token)}
 
 
-def get_all_bonus(skip=0, all_data=[]):
+
+def get_all_bonus(token, skip=0, all_data=[]):
+    headers={'Authorization': 'Bearer {}'.format(token)}
     if skip==0: all_data=[]
     url=base+'bonuses?limit={}&skip={}&include_children=true'.format(100, skip)
     res=requests.get(url, headers=headers).json()
@@ -54,8 +55,8 @@ def parse_person(row):
 
 
 
-def generate_network_data():
-    data=get_all_bonus()
+def generate_network_data(token):
+    data=get_all_bonus(token)
     edge_list=pd.DataFrame()
     node_list=pd.DataFrame()
     
