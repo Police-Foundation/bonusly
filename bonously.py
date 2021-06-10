@@ -19,7 +19,7 @@ def get_all_bonus(token, skip=0, all_data=[]):
         return all_data
     else:
         all_data.extend(res['result'])
-        return get_all_bonus(token, skip=skip+100, all_data=all_data)
+        return get_all_bonus(token=token, skip=skip+100, all_data=all_data)
 
 # +
 # data[4]
